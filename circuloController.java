@@ -18,11 +18,32 @@ import br.uni.formas.retangulos.area1;
 import br.uni.formas.service.Service;
 
 @RestController
-@RequestMapping("/formas/retangulo/area1")
+@RequestMapping("/formas/circulo/area1")
 public class circuloController {
 	
 	@Autowired
+	private CalculoRepository repository;
+
 	
+	@PostMapping
+	public  ResponseEntity<Object> SaveSchedule(@RequestBody List<Area> area) {
+		try {
+			
+			double raio = scan.nextFloat();
+	       		double area = Math.PI * (Math.pow(raio, 2));
+	       
+	       		//Calcula o valor informado do raio e eleva a 2 depois multiplica por PI
+
+	       		System.out.println("O valor da area do círculo é " + area);
+			
+			
+			repository.saveAll(schedules);
+			return new ResponseEntity<>(new SimpleRestResponse("success", String.format("A consulta retornou sucesso: %1$s linhas afetadas", schedules.size())),HttpStatus.OK);
+		}
+		catch (Exception e) {
+			return new ResponseEntity<>(new SimpleRestResponse("error", String.format("Ocorreu um erro inserindo o registro: %1$s", e.getLocalizedMessage())),HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
 	@GetMapping
 	public static void main(String[]args) {
 				
